@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/lingui/js-lingui/compare/v4.6.0...v4.7.0) (2024-01-05)
+
+### Bug Fixes
+
+- allow parentheses in catalog pathnames ([#1820](https://github.com/lingui/js-lingui/issues/1820)) ([f5fae0e](https://github.com/lingui/js-lingui/commit/f5fae0ed69ccb91bdd80343686dec2a231aa7657))
+- double render due to wrong assertion ([#1817](https://github.com/lingui/js-lingui/issues/1817)) ([8830f2e](https://github.com/lingui/js-lingui/commit/8830f2eb69a39eb22131e8b554913b5fe2fc1165))
+- double render due to wrong assertion ([#1824](https://github.com/lingui/js-lingui/issues/1824)) ([bd8ad11](https://github.com/lingui/js-lingui/commit/bd8ad11b34b7784d767bce1256d1e845b0e6bdb3))
+- warnings about invalid dependencies on Windows ([#1828](https://github.com/lingui/js-lingui/issues/1828)) ([5f07937](https://github.com/lingui/js-lingui/commit/5f0793746af292a994ba24ead45af9cda40792d3))
+
+### Features
+
+- **vite-plugin:** add support for vite@5 ([#1827](https://github.com/lingui/js-lingui/issues/1827)) ([5548d26](https://github.com/lingui/js-lingui/commit/5548d26194296fdc0c02c1b4f2c5bbda5c94db0b))
+
+# [4.6.0](https://github.com/lingui/js-lingui/compare/v4.5.0...v4.6.0) (2023-12-01)
+
+### Bug Fixes
+
+- **cli:** import type as type ([#1802](https://github.com/lingui/js-lingui/issues/1802)) ([960aadb](https://github.com/lingui/js-lingui/commit/960aadb65f355e79af528d76549a480b0a2de4aa))
+- **cli:** sorting issue when different locales are used on host machines ([#1808](https://github.com/lingui/js-lingui/issues/1808)) ([4b8b2a7](https://github.com/lingui/js-lingui/commit/4b8b2a79e667a2959fea230b4bb897d2ed13bd08))
+- **experimental-extractor:** fix ERR_IMPORT_ASSERTION_TYPE_MISSING issue ([#1775](https://github.com/lingui/js-lingui/issues/1775)) ([efcd405](https://github.com/lingui/js-lingui/commit/efcd4051fbada719d69088107d8a6da0ad61daeb))
+
+### Features
+
+- **format-json:** ability to set indentation ([#1807](https://github.com/lingui/js-lingui/issues/1807)) ([6ee7e63](https://github.com/lingui/js-lingui/commit/6ee7e63631387b634f0b3e753dae4417c27b7744))
+- **message-utils:** make generateMessageId to be working in browser ([#1776](https://github.com/lingui/js-lingui/issues/1776)) ([f879ddb](https://github.com/lingui/js-lingui/commit/f879ddbbc4627f94c579e0156958b4ec4026e371))
+
+### Reverts
+
+- Revert "docs: add the ESLint plugin announcement (#1759)" (#1774) ([e7a36d1](https://github.com/lingui/js-lingui/commit/e7a36d1e562992dcea3e632c35303b9bb70dcea8)), closes [#1759](https://github.com/lingui/js-lingui/issues/1759) [#1774](https://github.com/lingui/js-lingui/issues/1774)
+
 # [4.5.0](https://github.com/lingui/js-lingui/compare/v4.4.2...v4.5.0) (2023-09-14)
 
 ### Features
