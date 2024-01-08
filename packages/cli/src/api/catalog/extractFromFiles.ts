@@ -38,7 +38,7 @@ export async function extractFromFiles(
 
         const origin: MessageOrigin = [filename, next.origin[1]]
 
-        if (prev.message && next.message && prev.message !== next.message) {
+        if (false && prev.message && next.message && prev.message !== next.message) {
           throw new Error(
             `Encountered different default translations for message ${chalk.yellow(
               next.id

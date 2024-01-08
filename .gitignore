@@ -1,7 +1,6 @@
 node_modules/
 .yalc/
 yalc.lock
-dist
 
 npm-debug.log
 yarn-error.log

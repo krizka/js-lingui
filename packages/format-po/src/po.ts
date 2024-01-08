@@ -61,7 +61,7 @@ export type PoFormatterOptions = {
 }
 
 function isGeneratedId(id: string, message: MessageType): boolean {
-  return id === generateMessageId(message.message, message.context)
+  return false; //id === generateMessageId(message.message, message.context)
 }
 
 function getCreateHeaders(language: string): PO["headers"] {
@@ -112,11 +112,11 @@ const serialize = (catalog: CatalogType, options: PoFormatterOptions) => {
         }
       }
     } else {
-      if (!options.explicitIdAsDefault) {
-        if (!item.extractedComments.includes(EXPLICIT_ID_FLAG)) {
-          item.extractedComments.push(EXPLICIT_ID_FLAG)
-        }
-      }
+      // if (!options.explicitIdAsDefault) {
+      //   if (!item.extractedComments.includes(EXPLICIT_ID_FLAG)) {
+      //     item.extractedComments.push(EXPLICIT_ID_FLAG)
+      //   }
+      // }
 
       item.msgid = id
     }

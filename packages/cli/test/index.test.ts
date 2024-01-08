@@ -52,6 +52,7 @@ describe("E2E Extractor Test", () => {
           locales: ["en", "pl"],
           sourceLocale: "en",
           format: "po",
+          orderBy: "messageId",
           catalogs: [
             {
               path: "<rootDir>/actual/{locale}",

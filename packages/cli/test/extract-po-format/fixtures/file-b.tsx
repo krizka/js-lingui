@@ -14,3 +14,7 @@ export function MyComponent2() {
 export function MyComponent3() {
   return <Trans id={"jsx.custom.id"}>This JSX element has custom id</Trans>
 }
+
+export function MyComponent4() {
+  return <Trans id="Hello world">This JSX element has custom id</Trans>
+}

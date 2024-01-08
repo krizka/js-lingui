@@ -295,46 +295,36 @@ export function order<T extends ExtractedCatalogType>(
   }[by]
 }
 
+
+type OrderEntry = [string, ExtractedCatalogType[string]];
+function orderKeys<T extends ExtractedCatalogType>(messages: T, comparer?: (a: OrderEntry, b: OrderEntry) => number): T {
+  return Object.fromEntries(Object.entries(messages).sort(comparer)) as T;
+}
+
 /**
  * Object keys are in the same order as they were created
  * https://stackoverflow.com/a/31102605/1535540
  */
 function orderByMessageId<T extends ExtractedCatalogType>(messages: T): T {
-  return Object.keys(messages)
-    .sort()
-    .reduce((acc, key) => {
-      ;(acc as any)[key] = messages[key]
-      return acc
-    }, {} as T)
+  return orderKeys(messages, ([a], [b]) => {
+    return a.localeCompare(b);
+  });
 }
 
 function orderByOrigin<T extends ExtractedCatalogType>(messages: T): T {
-  function getFirstOrigin(messageKey: string) {
-    const sortedOrigins = messages[messageKey].origin.sort((a, b) => {
-      if (a[0] < b[0]) return -1
-      if (a[0] > b[0]) return 1
-      return 0
-    })
+  function getFirstOrigin(message: ExtractedCatalogType[string]) {
+    const sortedOrigins = message.origin.sort((a, b) =>
+      a[0].localeCompare(b[0])
+    )
     return sortedOrigins[0]
   }
 
-  return Object.keys(messages)
-    .sort((a, b) => {
-      const [aFile, aLineNumber] = getFirstOrigin(a)
-      const [bFile, bLineNumber] = getFirstOrigin(b)
+  return orderKeys(messages, ([, a], [, b]) => {
+    const [aFile, aLineNumber] = getFirstOrigin(a)
+    const [bFile, bLineNumber] = getFirstOrigin(b)
 
-      if (aFile < bFile) return -1
-      if (aFile > bFile) return 1
-
-      if (aLineNumber < bLineNumber) return -1
-      if (aLineNumber > bLineNumber) return 1
-
-      return 0
-    })
-    .reduce((acc, key) => {
-      ;(acc as any)[key] = messages[key]
-      return acc
-    }, {} as T)
+    return aFile.localeCompare(bFile) || aLineNumber - bLineNumber;
+  });
 }
 
 export function orderByMessage<T extends ExtractedCatalogType>(messages: T): T {
@@ -342,14 +332,9 @@ export function orderByMessage<T extends ExtractedCatalogType>(messages: T): T {
   // @see https://github.com/lingui/js-lingui/pull/1808
   const collator = new Intl.Collator("en-US")
 
-  return Object.keys(messages)
-    .sort((a, b) => {
-      const aMsg = messages[a].message || ""
-      const bMsg = messages[b].message || ""
-      return collator.compare(aMsg, bMsg)
-    })
-    .reduce((acc, key) => {
-      ;(acc as any)[key] = messages[key]
-      return acc
-    }, {} as T)
+  return orderKeys(messages, ([, a], [, b]) => {
+    const aMsg = a.message || ""
+    const bMsg = b.message || ""
+    return collator.compare(aMsg, bMsg)
+  });
 }
